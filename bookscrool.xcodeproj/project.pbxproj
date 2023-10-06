@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A296CA142ACFA9610058BBCB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A296CA132ACFA9610058BBCB /* Launch Screen.storyboard */; };
 		A2D90F072ACE4672000AD8EA /* bookscroolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D90F062ACE4672000AD8EA /* bookscroolApp.swift */; };
-		A2D90F092ACE4672000AD8EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D90F082ACE4672000AD8EA /* ContentView.swift */; };
 		A2D90F0B2ACE4672000AD8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2D90F0A2ACE4672000AD8EA /* Assets.xcassets */; };
 		A2D90F0E2ACE4672000AD8EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2D90F0D2ACE4672000AD8EA /* Preview Assets.xcassets */; };
 		A2D90F182ACE4673000AD8EA /* bookscroolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D90F172ACE4673000AD8EA /* bookscroolTests.swift */; };
 		A2D90F222ACE4673000AD8EA /* bookscroolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D90F212ACE4673000AD8EA /* bookscroolUITests.swift */; };
 		A2D90F242ACE4673000AD8EA /* bookscroolUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D90F232ACE4673000AD8EA /* bookscroolUITestsLaunchTests.swift */; };
+		A2FD4D742ACE4A7F005503B8 /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD4D732ACE4A7F005503B8 /* ReaderView.swift */; };
+		A2FD4D7A2ACE5138005503B8 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD4D792ACE5138005503B8 /* BookManager.swift */; };
+		A2FD4D7C2ACE51DD005503B8 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FD4D7B2ACE51DD005503B8 /* LibraryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A296CA132ACFA9610058BBCB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A2D90F032ACE4672000AD8EA /* bookscrool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookscrool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D90F062ACE4672000AD8EA /* bookscroolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookscroolApp.swift; sourceTree = "<group>"; };
-		A2D90F082ACE4672000AD8EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A2D90F0A2ACE4672000AD8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2D90F0D2ACE4672000AD8EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A2D90F132ACE4673000AD8EA /* bookscroolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookscroolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,9 @@
 		A2D90F1D2ACE4673000AD8EA /* bookscroolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookscroolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D90F212ACE4673000AD8EA /* bookscroolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookscroolUITests.swift; sourceTree = "<group>"; };
 		A2D90F232ACE4673000AD8EA /* bookscroolUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookscroolUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A2FD4D732ACE4A7F005503B8 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
+		A2FD4D792ACE5138005503B8 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
+		A2FD4D7B2ACE51DD005503B8 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +100,13 @@
 		A2D90F052ACE4672000AD8EA /* bookscrool */ = {
 			isa = PBXGroup;
 			children = (
+				A2FD4D732ACE4A7F005503B8 /* ReaderView.swift */,
+				A2FD4D7B2ACE51DD005503B8 /* LibraryView.swift */,
+				A2FD4D792ACE5138005503B8 /* BookManager.swift */,
 				A2D90F062ACE4672000AD8EA /* bookscroolApp.swift */,
-				A2D90F082ACE4672000AD8EA /* ContentView.swift */,
 				A2D90F0A2ACE4672000AD8EA /* Assets.xcassets */,
 				A2D90F0C2ACE4672000AD8EA /* Preview Content */,
+				A296CA132ACFA9610058BBCB /* Launch Screen.storyboard */,
 			);
 			path = bookscrool;
 			sourceTree = "<group>";
@@ -231,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A296CA142ACFA9610058BBCB /* Launch Screen.storyboard in Resources */,
 				A2D90F0E2ACE4672000AD8EA /* Preview Assets.xcassets in Resources */,
 				A2D90F0B2ACE4672000AD8EA /* Assets.xcassets in Resources */,
 			);
@@ -257,8 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2D90F092ACE4672000AD8EA /* ContentView.swift in Sources */,
+				A2FD4D742ACE4A7F005503B8 /* ReaderView.swift in Sources */,
 				A2D90F072ACE4672000AD8EA /* bookscroolApp.swift in Sources */,
+				A2FD4D7C2ACE51DD005503B8 /* LibraryView.swift in Sources */,
+				A2FD4D7A2ACE5138005503B8 /* BookManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +437,8 @@
 				DEVELOPMENT_TEAM = JQZZJUQNS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = bookscrool;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +468,8 @@
 				DEVELOPMENT_TEAM = JQZZJUQNS6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = bookscrool;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
