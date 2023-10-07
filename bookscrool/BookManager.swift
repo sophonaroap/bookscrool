@@ -10,14 +10,15 @@ import Foundation
 
 
 // Struct to store chapter info
-struct Chapter: Codable {
+struct Chapter: Codable, Identifiable {
+    let id: Int
     let title: String
     let text: String
     let next: URL?
 }
 
 // Struct to store the book info
-struct Book: Codable {
+struct Book: Codable, Identifiable {
     let id: Int
     let title: String
     let chapter_set: [Chapter]?
