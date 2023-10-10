@@ -12,16 +12,24 @@ struct ReaderView: View {
     @State var start_chapter_id: Int
     @State var curr_chapter_id: Int?
     @State var curr_chapter_height: Int?
-    @State var chapters: [Chapter]? = []
+    @State var chapters: [Chapter] = []
+    
+//    d = v * t
+//    curr_chapter_height = scroll_speed * t
+//    t = curr_chapter_height / scroll_speed
     
     @State private var scroll_speed = 0.0
-    @State private var curr_offset = 0.0
-
+    @State private var scroll_offset = 0.0
+    @State private var scroll_to = 0
+    @State private var scroll_padding = 0.0
+    
     func scroll() {
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            curr_offset += scroll_speed * 0.05
-            
-            scroll()
+        DispatchQueue.main.async {
+            scroll_offset += scroll_speed * 0.01
+            scroll_padding += scroll_speed * 1.0
+            print(scroll_offset)
+            scroll_to = Int(scroll_offset.rounded())
+            print(scroll_to)
         }
     }
     
@@ -30,62 +38,47 @@ struct ReaderView: View {
             ScrollViewReader { scrollView in
                 ScrollView(.vertical) {
                     LazyVStack {
-                        ForEach(chapters!) { chapter in
+                        ForEach(Array(chapters.enumerated()), id: \.offset) { index, chapter in
                             VStack {
-                                Text(chapter.title)
+                                Text(String(index))
                                     .font(.title2)
+                                    .id(index)
                                 
                                 Text(chapter.text)
                                     .font(.body)
                             }
-                            .overlay(
-                                GeometryReader { proxy in
-                                    Color.clear.onAppear {
-                                        curr_chapter_id = chapter.id
-                                        print("curr_chapter_id: \(curr_chapter_id!)")
-                                        print("chapter.id: \(chapter.id)")
-                                    }
-                                }
-                            )
-                            
+//                            .offset(y: CGFloat(scroll_offset))
                         }
                     }
                     .onAppear{
+                        print("start chapter index", start_chapter_id)
                         curr_chapter_id = start_chapter_id
                         
-                        if book!.chapter_set!.count >= 3 {
-                            chapters = Array(book!.chapter_set![start_chapter_id-1...start_chapter_id+1])
-                        } else {
-                            chapters = Array(book!.chapter_set![start_chapter_id-1...book!.chapter_set!.count])
+                        scroll_offset = Double(start_chapter_id)
+                        
+                        print("chapter count", book!.chapter_set!.count)
+                        
+                        chapters = Array(book!.chapter_set!)
+                        
+                        DispatchQueue.main.async() {
+                            scrollView.scrollTo(start_chapter_id, anchor: .topLeading)
                         }
                         
-                        if start_chapter_id != 0 {
-                            scrollView.scrollTo(start_chapter_id)
+                        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
+                            scroll()
+                        })
+                    }                    
+                    .onChange(of: scroll_to) {
+                        withAnimation(.smooth(duration: 20)) {
+                            scrollView.scrollTo(scroll_to, anchor: .topLeading)
                         }
                     }
-                    .onChange(of: scroll_speed, {
-                        if scroll_speed != 0.0 {
-                            scroll()
-                        }
-                        print("scroll_speed: \(scroll_speed)")
-                    })
-                    .onChange(of: curr_chapter_id, {
-                        if curr_chapter_id != nil {
-                            if book!.chapter_set!.count >= 3 {
-                                chapters = Array(book!.chapter_set![start_chapter_id-1...curr_chapter_id!+1])
-                            } else {
-                                chapters = Array(book!.chapter_set![start_chapter_id-1...book!.chapter_set!.count])
-                            }
-                        }
-                        print("curr_chapter_id: \(curr_chapter_id!)")
-                    })
-                    
                 }
                 .navigationTitle(book!.title)
                 .padding(.horizontal)
             }
             HStack {
-                Slider(value: $scroll_speed, in: -1...1, step: 0.2)
+                Slider(value: $scroll_speed, in: -1...1, step: 0.05)
                     .accessibilityLabel("Scroll Speed")
                 .tint(.accentColor)
                 .rotationEffect(.degrees(-90), anchor: .bottomTrailing)
@@ -93,9 +86,7 @@ struct ReaderView: View {
             }
             .padding()
         }
-        
     }
-        
 }
 
 let chapter1 = Chapter(id: 1, title: "Communication and Companionship", text: "\nDogs have a unique ability to communicate and connect with humans on an emotional level. \n\nThey use a combination of body language, vocalizations, and facial expressions to convey their feelings and needs. \n\nWhether it's the joyful wagging of a tail when their owner returns home or the empathetic nuzzling when someone is upset, dogs have an uncanny way of understanding and responding to human emotions. \n\nThis deep bond between humans and dogs provides a source of companionship and support that can be profoundly comforting.", next: nil)

@@ -19,9 +19,9 @@ struct LibraryView: View {
             if (books != nil) {
                 List(books!) { book in
                     Menu {
-                        ForEach(book.chapter_set!) { chapter in
-                            NavigationLink(destination: ReaderView(book: book, start_chapter_id: chapter.id)) {
-                                Text(chapter.title)
+                        ForEach(Array(book.chapter_set!.enumerated()), id: \.offset) { index, chapter in
+                            NavigationLink(destination: ReaderView(book: book, start_chapter_id: index)) {
+                                Text(String(index))
                             }
                         
                         }
